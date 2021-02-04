@@ -15,6 +15,7 @@
  const correctProgress = document.querySelector('#correct-progress')
  const wrongProgress = document.querySelector('#wrong-progress')
  const image = document.querySelector('#image');
+ const loadPage = document.querySelector('#load-page');
  
 
 // trigger with enter and button
@@ -78,7 +79,7 @@ function handleBtn(){
                      image.setAttribute('src','image/lost1.gif');
                  }
                  if(correct >= 3){
-                     image.setAttribute('src','happy1.gif');
+                     image.setAttribute('src','image/happy1.gif');
                  }
                  if(correct === 2 && wrong === 2){
                      image.setAttribute('src','image/happyTwo.gif');
@@ -89,6 +90,15 @@ function handleBtn(){
                 takeDigit.setAttribute('readonly',null)
                 takeDigit.style.backgroundColor='#17A2B8';
                 alert('Game Over');
+                
+                loadPage.innerHTML = 'play again';
+                loadPage.classList ='bg-info p-1';
+                loadPage.style.color='white';
+                loadPage.style.cursor='pointer';
+                loadPage.style.borderRadius= '25px';
+                loadPage.addEventListener('click',()=>{
+                    location.reload();
+                })
             }
 
             resultList.appendChild(listItem);
