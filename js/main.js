@@ -41,6 +41,7 @@ function handleBtn(){
         let listItem = document.createElement('li');
         listItem.classList = 'list-group-item';
         
+        //validation and random number check
         if(guessDigit<=9 && guessDigit>=0 && guessDigit !== ''){
             
             if(count>5){
@@ -72,9 +73,17 @@ function handleBtn(){
                     wrongScore.innerHTML=wrong;
                  }
 
-                 if(wrong===3){
-                     image.setAttribute('src','image/cry.gif')
+                 // image emotion logic
+                 if(wrong >= 3){
+                     image.setAttribute('src','image/lost1.gif');
                  }
+                 if(correct >= 3){
+                     image.setAttribute('src','happy1.gif');
+                 }
+                 if(correct === 2 && wrong === 2){
+                     image.setAttribute('src','image/happyTwo.gif');
+                 }
+                 
             }
             if(count===5){
                 takeDigit.setAttribute('readonly',null)
@@ -87,44 +96,10 @@ function handleBtn(){
 
         }
         else{
-            alert('something wrong')
+            const message = 'দুঃখিত !! অনুগ্রহ করে ০-৯ পর্যন্ত যে কোন একটি সংখ্যা দিন।';
+            alert(message);
         }
 
         takeDigit.value = '';
 }
 
-//for trigger with button
-// guessBtn.addEventListener('click',(event)=>{
-    
-//     let guessDigit = parseInt(takeDigit.value);
-//     if(guessDigit<=9 && guessDigit>=0 && guessDigit !== ''){
-//         guessNumber();
-//     }
-//     else{
-//         alert('something wrong')
-//     }
-// })
-//work with function
-
-// function validation(){
-//     let guessDigit = parseInt(takeDigit.value);
-//     if(guessDigit<=9 && guessDigit>=0 && guessDigit !== ''){
-//         guessNumber();
-//     }
-//     else{
-//         alert('something wrong')
-//     }
-// }
-
-
-// function guessNumber(){
-//     const digit = parseInt(takeDigit.value);
-//     let randomNumber = Math.floor(Math.random() * 5) + 1;
-//     if(randomNumber === digit){
-//         console.log('win')
-//     }
-//     else{
-//         console.log('not match. number was '+ randomNumber);
-//     }
-//     takeDigit.value = ''
-// }
